@@ -1,0 +1,57 @@
+﻿<Window x:Class="ContactsWSIO.Views.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ContactsWSIO"
+        xmlns:Viewmodel="clr-namespace:ContactsWSIO.Viewmodel"
+        xmlns:Model="clr-namespace:ContactsWSIO.Models"
+        mc:Ignorable="d"
+        Title="ContactApp" Height="450" Width="800" WindowStartupLocation="CenterScreen" WindowState="Normal" Background="#FFD0C7BB">
+    <Window.DataContext>
+        <Viewmodel:MainViewModel/>
+    </Window.DataContext>
+    <Grid Margin="15">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        
+        <Label Grid.Row="0" Grid.Column="0" Content="Contacts" FontSize="27" FontFamily="IBM Plex Sans Medium" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+
+        <TextBox Grid.Column="1" Grid.ColumnSpan="2" Height="20" Name="FilterTextBox" TextChanged="FilterTextBox_TextChanged"/>
+
+        <ListView x:Name="UserList" Grid.Row="1" Grid.RowSpan="3" Grid.ColumnSpan="5" Background="#FFBBAF9F" ItemsSource="{Binding Users}" Foreground="#FF001038">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn DisplayMemberBinding="{Binding FirstName}" Header="Firstname" Width="Auto"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding LastName}" Header="Lastname" Width="Auto"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding Email}" Header="Email" Width="Auto"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding Phone}" Header="Phone" Width="Auto" />
+                    <GridViewColumn DisplayMemberBinding="{Binding Mobile}" Header="Mobil" Width="Auto"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+
+        <ToolBarPanel Grid.Column="3" Margin="7" Orientation="Horizontal">
+            <Button Content="+" x:Name="btn_addContact" Click="btn_addContact_Click" Margin="5" Width="25" Height="25"/>
+            <Button Content="/" x:Name="btn_editContact" Click="btn_editContact_Click" Margin="5" Width="25" Height="25"/>
+            <Button Content="x" x:Name="btn_deleteContact" Click="btn_deleteContact_Click" Margin="5" Width="25" Height="25"/>
+            <Button Grid.Column="4" Content="Testbutton" x:Name="testbutton" Click="testbutton_Click" Width="25" Height="25"/>
+        </ToolBarPanel>
+
+        <Button Grid.Column="4" Content="Settings" Height="30" Width="50" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="5" x:Name="btn_settings" Click="btn_settings_Click"/>
+
+
+
+    </Grid>
+</Window>
