@@ -4,8 +4,11 @@ using ContactsWSIO.Models;
 
 namespace ContactsWSIO.Usermanager 
 {
-  public class EditUser(). 
+  public class EditUser 
   {
-    
+     public void EditSelectedUser()
+     {
+       
+     }
   }
 }
